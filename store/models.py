@@ -16,7 +16,7 @@ class Product(models.Model):
     name                          = models.CharField(max_length=150)
     price                         = models.FloatField(max_length=150)
     digital                       = models.BooleanField(default=False, null=True, blank=False)
-    #images
+    image                         = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -93,7 +93,7 @@ class Tutorial(models.Model):
 
     topic                         = models.CharField(max_length=50)
     digital                       = models.BooleanField(default=False, null=True, blank=False)
-    #images                         =
+    image                         = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return str(self.title) + ' | ' + str(self.instructor)
