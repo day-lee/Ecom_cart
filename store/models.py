@@ -21,6 +21,14 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
 
 class Order(models.Model):
     customer                      = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.SET_NULL)
@@ -106,6 +114,9 @@ class Curriculum(models.Model):
     date_created                  = models.DateTimeField(auto_now_add=True, null=True)
     goal                          = models.CharField(max_length=150, null=True)
     note                          = models.CharField(max_length=500, null=True)
+
+    complete                      = models.BooleanField(default=False)
+    curriculum_id                 = models.CharField(max_length=150, null=True)
 
     def __str__(self):
         return str(self.customer) + ' | ' + str(self.topic)
